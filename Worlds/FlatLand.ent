@@ -1,0 +1,9 @@
+SubScene {
+ Parent "worlds/Editor/Slots/Slots/Flat/SlotFlat.ent"
+}
+Layer Game {
+ Index 0
+}
+Layer ReplicationTutorial {
+ Index 1
+}

@@ -1,0 +1,21 @@
+CommentEntity Comment_OutputText {
+ coords 59.84 1.965 68.578
+ angleY 180
+ m_Comment "OutputText"
+ m_ScaleByDistance 1
+ m_FaceCamera 1
+ m_VisibleOverall 1
+ m_VisibleIngame 1
+ m_TextBackground 1
+ m_BackgroundTransparency 1
+}
+SCR_BaseTriggerEntity {
+ coords 59.892 0.001 76.298
+ TriggerShapeType Sphere
+ SphereRadius 1.3
+ DrawShape 1
+ ShapeColor 1 0 0 0.353
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ UpdatePeriod 0.25
+}

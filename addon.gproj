@@ -1,0 +1,8 @@
+GameProject {
+ ID "SimpleReplicationTutorial"
+ GUID "5A235BAFED297DCD"
+ TITLE "SimpleReplicationTutorial"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}
