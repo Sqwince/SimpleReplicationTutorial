@@ -1,13 +1,14 @@
 [EntityEditorProps(category: "GameScripted/Utility", description: "Editor comment, for leaving notes in the editor", sizeMin: "-1 -1 -1", sizeMax: "1 1 1", visible: false, dynamicBox: true)]
-class SQW_EditableCommentEntityClass : SCR_EditableCommentComponentClass
+class SQW_EditableCommentEntityClass : CommentEntityClass
 {
 }
 
-class SQW_EditableCommentEntity : SCR_EditableCommentComponent
+class SQW_EditableCommentEntity : CommentEntity
 {
+	//Parent variables
+	//string m_Comment;
+	//vector m_Color;
 	
-	string m_sComment;
-	ref Color m_Color;
 	
 	//------------------------------------------------------------------------------------------------
 	/*!
@@ -16,9 +17,10 @@ class SQW_EditableCommentEntity : SCR_EditableCommentComponent
 	*/
 	void SetComment(string comment)
 	{
-	m_sComment = comment;
+	m_Comment = comment;
 	}
 
+	
 	//------------------------------------------------------------------------------------------------
 	/*!
 	set comment color

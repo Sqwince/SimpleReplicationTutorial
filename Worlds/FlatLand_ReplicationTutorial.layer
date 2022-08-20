@@ -10,7 +10,7 @@ GenericEntity TheCube {
    }
   }
  }
- coords 60 0.5 70
+ coords 60 3.309 70
  Flags 2
 }
 SCR_BaseTriggerEntity TriggeArea {
@@ -32,91 +32,4 @@ SCR_BaseTriggerEntity TriggeArea {
  PeriodicQueries 1
  UpdatePeriod 1
  ClassFilter "ChimeraCharacter"
-}
-$grp SQW_EditableCommentEntity {
- OutputText {
-  components {
-   RplComponent "{5A26E8C880A4FAC5}" {
-   }
-  }
-  coords 60.962 2.785 69.753
-  angleY -167.076
-  m_Comment "Net Load on Client:"
-  m_VisibleOverall 1
-  m_VisibleIngame 1
-  m_TextBackground 1
-  m_BackgroundColor 0 0 0
-  m_BackgroundTransparency 0
- }
- OutputText2 {
-  components {
-   RplComponent "{5A26E8C880A4FAC5}" {
-   }
-  }
-  coords 60.962 2.549 69.753
-  angleY -167.076
-  m_Comment "        Replicates:"
-  m_VisibleOverall 1
-  m_VisibleIngame 1
-  m_TextBackground 1
-  m_BackgroundColor 0 0 0
-  m_BackgroundTransparency 0
- }
- OutputText3 {
-  components {
-   RplComponent "{5A26E8C880A4FAC5}" {
-   }
-  }
-  coords 60.963 2.314 69.753
-  angleY -167.076
-  m_Comment "             COLOR:"
-  m_VisibleOverall 1
-  m_VisibleIngame 1
-  m_TextBackground 1
-  m_BackgroundColor 0 0 0
-  m_BackgroundTransparency 0
- }
- OutputText4 {
-  components {
-   RplComponent "{5A26E8C880A4FAC5}" {
-   }
-  }
-  coords 59.141 2.785 70
-  angleY -167.076
-  m_Comment "FALSE"
-  m_VisibleOverall 1
-  m_VisibleIngame 1
-  m_TextBackground 1
-  m_BackgroundColor 0 0 0
-  m_BackgroundTransparency 0
- }
- OutputText5 {
-  components {
-   RplComponent "{5A26E8C880A4FAC5}" {
-   }
-  }
-  coords 59.141 2.549 70
-  angleY -167.076
-  m_Comment "FALSE"
-  m_VisibleOverall 1
-  m_VisibleIngame 1
-  m_TextBackground 1
-  m_BackgroundColor 0 0 0
-  m_BackgroundTransparency 0
- }
- OutputText6 {
-  components {
-   RplComponent "{5A26E8C880A4FAC5}" {
-   }
-  }
-  coords 59.142 2.314 70
-  angleY -167.076
-  m_Comment "0"
-  m_Size 0.2
-  m_VisibleOverall 1
-  m_VisibleIngame 1
-  m_TextBackground 1
-  m_BackgroundColor 0 0 0
-  m_BackgroundTransparency 0
- }
 }
