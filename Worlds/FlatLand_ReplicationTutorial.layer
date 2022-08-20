@@ -1,21 +1,122 @@
-CommentEntity Comment_OutputText {
- coords 59.84 1.965 68.578
- angleY 180
- m_Comment "OutputText"
- m_ScaleByDistance 1
- m_FaceCamera 1
- m_VisibleOverall 1
- m_VisibleIngame 1
- m_TextBackground 1
- m_BackgroundTransparency 1
+GenericEntity TheCube {
+ components {
+  MeshObject "{5A25188CC47C9871}" {
+   Object "{85E21F4FAEF9C8E3}system/wbdata/MaterialEditor/MaterialCube.xob"
+   Materials {
+    MaterialAssignClass "{5A26E8C9722BBEAF}" {
+     SourceMaterial "DummyMaterial"
+     AssignedMaterial "{639855E4E1F52285}Common/Materials/Preview_Scriptable.emat"
+    }
+   }
+  }
+ }
+ coords 60 0.5 70
+ Flags 2
 }
-SCR_BaseTriggerEntity {
- coords 59.892 0.001 76.298
- TriggerShapeType Sphere
- SphereRadius 1.3
+SCR_BaseTriggerEntity TriggeArea {
+ components {
+  SQW_ColorChanger "{5A2727C3BA7206EE}" {
+  }
+  RplComponent "{5A2727C3073613A0}" {
+  }
+ }
+ coords 60 0.001 75
+ TriggerShapeType "Oriented Bounding Box"
+ SphereRadius 2
+ BoxMins -0.5 -0.1 -0.5
+ BoxMaxs 0.5 1 0.5
+ "Polyline Height" 1
  DrawShape 1
- ShapeColor 1 0 0 0.353
+ ShapeColor 1 0 0.75 0.224
  TriggerActivationType "All changes"
  PeriodicQueries 1
- UpdatePeriod 0.25
+ UpdatePeriod 1
+ ClassFilter "ChimeraCharacter"
+}
+$grp SQW_EditableCommentEntity {
+ OutputText {
+  components {
+   RplComponent "{5A26E8C880A4FAC5}" {
+   }
+  }
+  coords 60.962 2.785 69.753
+  angleY -167.076
+  m_Comment "Net Load on Client:"
+  m_VisibleOverall 1
+  m_VisibleIngame 1
+  m_TextBackground 1
+  m_BackgroundColor 0 0 0
+  m_BackgroundTransparency 0
+ }
+ OutputText2 {
+  components {
+   RplComponent "{5A26E8C880A4FAC5}" {
+   }
+  }
+  coords 60.962 2.549 69.753
+  angleY -167.076
+  m_Comment "        Replicates:"
+  m_VisibleOverall 1
+  m_VisibleIngame 1
+  m_TextBackground 1
+  m_BackgroundColor 0 0 0
+  m_BackgroundTransparency 0
+ }
+ OutputText3 {
+  components {
+   RplComponent "{5A26E8C880A4FAC5}" {
+   }
+  }
+  coords 60.963 2.314 69.753
+  angleY -167.076
+  m_Comment "             COLOR:"
+  m_VisibleOverall 1
+  m_VisibleIngame 1
+  m_TextBackground 1
+  m_BackgroundColor 0 0 0
+  m_BackgroundTransparency 0
+ }
+ OutputText4 {
+  components {
+   RplComponent "{5A26E8C880A4FAC5}" {
+   }
+  }
+  coords 59.141 2.785 70
+  angleY -167.076
+  m_Comment "FALSE"
+  m_VisibleOverall 1
+  m_VisibleIngame 1
+  m_TextBackground 1
+  m_BackgroundColor 0 0 0
+  m_BackgroundTransparency 0
+ }
+ OutputText5 {
+  components {
+   RplComponent "{5A26E8C880A4FAC5}" {
+   }
+  }
+  coords 59.141 2.549 70
+  angleY -167.076
+  m_Comment "FALSE"
+  m_VisibleOverall 1
+  m_VisibleIngame 1
+  m_TextBackground 1
+  m_BackgroundColor 0 0 0
+  m_BackgroundTransparency 0
+ }
+ OutputText6 {
+  components {
+   RplComponent "{5A26E8C880A4FAC5}" {
+   }
+  }
+  coords 59.142 2.314 70
+  angleY -167.076
+  m_Comment "0"
+  m_Size 0.2
+  m_VisibleOverall 1
+  m_VisibleIngame 1
+  m_TextBackground 1
+  m_BackgroundColor 0 0 0
+  m_BackgroundTransparency 0
+ }
 }
