@@ -1,17 +1,21 @@
-GenericEntity TheCube {
+GameEntity TheCube {
  components {
-  MeshObject "{5A25188CC47C9871}" {
+  MeshObject "{5A2AE5B2BA3F6585}" {
    Object "{85E21F4FAEF9C8E3}system/wbdata/MaterialEditor/MaterialCube.xob"
    Materials {
-    MaterialAssignClass "{5A26E8C9722BBEAF}" {
+    MaterialAssignClass "{5A2AE5B2666D8EF2}" {
      SourceMaterial "DummyMaterial"
-     AssignedMaterial "{639855E4E1F52285}Common/Materials/Preview_Scriptable.emat"
+     AssignedMaterial "{5CE9FD6089D048BF}system/wbdata/materials/defaultGround.emat"
     }
    }
   }
+  ParametricMaterialInstanceComponent "{5A2AE5B282161FBA}" {
+   ColorAlbedo 0 0.069 0.913 1
+  }
+  RplComponent "{5A2AE5B2141E46F0}" {
+  }
  }
- coords 60 3.309 70
- Flags 2
+ coords 60 0.5 70
 }
 SCR_BaseTriggerEntity TriggeArea {
  components {
@@ -20,11 +24,11 @@ SCR_BaseTriggerEntity TriggeArea {
   RplComponent "{5A2727C3073613A0}" {
   }
  }
- coords 60 0.001 75
+ coords 60 0.001 70
  TriggerShapeType "Oriented Bounding Box"
  SphereRadius 2
- BoxMins -0.5 -0.1 -0.5
- BoxMaxs 0.5 1 0.5
+ BoxMins -0.6 -0.1 -0.6
+ BoxMaxs 0.6 1.2 0.6
  "Polyline Height" 1
  DrawShape 1
  ShapeColor 1 0 0.75 0.224
