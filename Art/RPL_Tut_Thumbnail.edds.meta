@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{3FDEBE383FC8C679}Art/SimpleRplTut_Image.edds"
+ Name "{B26C33CE4F1D913A}Art/RPL_Tut_Thumbnail.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
   }

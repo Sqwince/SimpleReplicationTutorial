@@ -3,95 +3,65 @@ class SQW_ColorChangerClass : ScriptComponentClass
 {
 }
 
-
+//------------------------------------------------------------------------------------------------
+/* SIMPLE REPLICATION IMPLEMENTATION TUTORIAL BASED ON THE FOLLOWING TUTORIALS:
+	https://community.bistudio.com/wiki/Arma_Reforger:Multiplayer_Scripting
+	https://www.youtube.com/watch?v=4Tnbf44NjXo&list=PLxwrIHk2cX5t4vQMdHDwtJvJ1ngACyyDO&index=7&t=320s
+*/
 //------------------------------------------------------------------------------------------------
 class SQW_ColorChanger : ScriptComponent
 {
-	
-	/*
-	You totally can change materials via script, you can use ParametricMaterialInstanceComponent component 
-	for basic emat attributes or if you want something a bit more advanced then you can use 
-	SCR_CustomMaterialAnimatorEntity (check the docs of this entity in the file where it is defined at)
-	or you can implement your own if you need a bit more control.
-	All of these will change the material for a specific entity instance, so it's not global
-	*/
-	
 	protected BaseWorld m_World;
+	protected ref RandomGenerator m_pRandomGenerator;
 	
 	//Cube
 	protected GameEntity m_Cube;
 	ParametricMaterialInstanceComponent m_ParametricMaterialinstanceComponent;
-	
-	
-	//location: X,Y,Z
-	vector m_vOrigin = {60, 1, 70};
+
 	
 	//Replication
-	//[RplProp(onRplName: "OnColorChanged")]		// this value is to be updated by the authority, not set locally by proxies (even owner)
-	protected int m_Color; 							// if it is set locally, the change will not broadcast and there will be a difference between the proxy and the authority
-													// this state discrepancy will last until authority's next update broadcast
-	protected ref RandomGenerator m_pRandomGenerator;
+	[RplProp(onRplName: "OnColorChanged")]				// m_Color: this value is to be updated by the authority, not set locally by proxies (even owner)
+	protected int m_Color; 								// if it is set locally, the change will not broadcast and there will be a difference between the proxy and the authority
+														// this state discrepancy will last until authority's next update broadcast
+
 	
 	
 	// Attached component.
 	protected RplComponent m_pRplComponent;
 
-	/*
-	protected SQW_EditableCommentEntity m_pComment; 
 	
-	//HUD
-	protected SCR_EditableCommentComponent m_NLoCTextBox;
-	protected bool m_bNetLoadOnClient;
-	protected SCR_EditableCommentComponent m_RplTextBox;
-	protected bool m_bReplicated;
-	protected SCR_EditableCommentComponent m_ColorTextBox;
-	*/
-
 	
 	//------------------------------------------------------------------------------------------------
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_Authority_Method(bool turningOn)
-	{
-	}
-	
-	/*	
-	//------------------------------------------------------------------------------------------------
-	// Called on the authority when an entity gets streamed
-	override bool RplSave(ScriptBitWriter writer)
-	{		
-		writer.Write(m_Color, 32);  //write 32 bits of m_Color - int is 32 bits in size		
-		return true;
+	protected void RpcAsk_Authority_Method()
+	{			
+		Print("authority-side code");
+		//Change Color
+		m_Color = GetRandomColor();
+		m_ParametricMaterialinstanceComponent.SetColor(m_Color);
+		Replication.BumpMe();
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	// Called on the streamed proxy
-	override bool RplLoad(ScriptBitReader reader)
-	{
-	
-		if (!reader.Read(m_Color, 32))  // read 32 bits of data - the authority wrote m_Color first, so it needs to be read first
-		{
-			return false;
-		}
-		
-				
-		return true;
+	// T
+	protected void OnColorChanged()
+	{					
+		//Change Color
+		//m_Color = GetRandomColor();
+		Print("proxy-side code");
+		m_ParametricMaterialinstanceComponent.SetColor(m_Color);					
 	}
-	*/
-	
-	
-	
 	
 	//------------------------------------------------------------------------------------------------
 	protected void OnTriggerActivate()
 	{					
-		//Change Color
-		m_Color = GetRandomColor();
-		m_ParametricMaterialinstanceComponent.SetColor(m_Color);			
+		//Request Server Change Color		
+		Rpc(RpcAsk_Authority_Method);
 	}
 	
 	//------------------------------------------------------------------------------------------------
 	// Gets Random color as int with 100% alpha
-	int GetRandomColor()
+	protected int GetRandomColor()
 	{
 		if(!m_pRandomGenerator)
 		{
@@ -143,6 +113,12 @@ class SQW_ColorChanger : ScriptComponent
 			}
 		
 		//cube material Component
+		/*You can change materials via ParametricMaterialInstanceComponent component 
+		  for basic emat attributes or if you want something a bit more advanced then you can use 
+		  SCR_CustomMaterialAnimatorEntity (check the docs of this entity in the file where it is defined at)
+		  or you can implement your own if you need a bit more control.
+		  All of these will change the material for a specific entity instance, so it's not global
+		*/
 		m_ParametricMaterialinstanceComponent = ParametricMaterialInstanceComponent.Cast(m_Cube.FindComponent(ParametricMaterialInstanceComponent));
 		
 		if(!m_ParametricMaterialinstanceComponent)
@@ -157,11 +133,13 @@ class SQW_ColorChanger : ScriptComponent
 	}
 		
 	//------------------------------------------------------------------------------------------------
+	//Constructor
 	void SQW_ColorChanger(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 	}
 	
 	//------------------------------------------------------------------------------------------------
+	//Destructor
 	void ~SQW_ColorChanger()
 	{
 	}
