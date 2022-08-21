@@ -16,6 +16,14 @@ class SQW_ColorChanger : ScriptComponent
 	All of these will change the material for a specific entity instance, so it's not global
 	*/
 	
+	//location: X,Y,Z
+	vector m_vOrigin = {60, 1, 70};
+	
+	//Replication
+	[RplProp(onRplName: "OnColorChanged")]			// this value is to be updated by the authority, not set locally by proxies (even owner)
+	protected int m_Color; 							// if it is set locally, the change will not broadcast and there will be a difference between the proxy and the authority
+													// this state discrepancy will last until authority's next update broadcast
+	 
 	
 	// Attached component.
 	protected RplComponent m_pRplComponent;
@@ -30,15 +38,74 @@ class SQW_ColorChanger : ScriptComponent
 	protected SCR_EditableCommentComponent m_RplTextBox;
 	protected bool m_bReplicated;
 	protected SCR_EditableCommentComponent m_ColorTextBox;
-	protected Color m_cColor;
 	
-	//location: X,Y,Z
-	vector m_vOrigin = {60, 1, 70};
+	
+	
+	//------------------------------------------------------------------------------------------------
+	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
+	protected void RpcAsk_Authority_Method(bool turningOn)
+	{
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//------------------------------------------------------------------------------------------------
+	// Called on the authority when an entity gets streamed
+	override bool RplSave(ScriptBitWriter writer)
+	{
+		
+		writer.Write(m_Color, 32);  //write 32 bits of m_Color - int is 32 bits in size
+			
+		return true;
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// Called on the streamed proxy
+	override bool RplLoad(ScriptBitReader reader)
+	{
+	
+		if (!reader.Read(m_Color, 32))  // read 32 bits of data - the authority wrote m_Color first, so it needs to be read first
+		{
+			return false;
+		}
+		
+		m_Sphere = Shape.CreateSphere(m_Color, ShapeFlags.VISIBLE, m_vOrigin, 1);
+		
+		return true;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	//------------------------------------------------------------------------------------------------
 	protected void OnTriggerActivate()
 	{			
 		int color = GetRandomColor();
+		m_Color = color;
+		
 		PrintFormat("New Color: %1", color.ToString());
 		m_Sphere.SetColor(color);		
 	}
@@ -95,8 +162,6 @@ class SQW_ColorChanger : ScriptComponent
 	override void OnPostInit(IEntity owner)
 	{
 		m_pRplComponent = RplComponent.Cast(owner.FindComponent(RplComponent));
-
-		
 					
 		m_Sphere = Shape.CreateSphere(0xff000000, ShapeFlags.VISIBLE, m_vOrigin, 1);
 		
