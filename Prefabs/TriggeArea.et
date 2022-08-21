@@ -1,0 +1,21 @@
+SCR_BaseTriggerEntity {
+ ID "5A2B35323458B5FA"
+ components {
+  SQW_ColorChanger "{5A2727C3BA7206EE}" {
+  }
+  RplComponent "{5A2727C3073613A0}" {
+  }
+ }
+ coords 60 0.001 70
+ TriggerShapeType "Oriented Bounding Box"
+ SphereRadius 2
+ BoxMins -0.6 -0.1 -0.6
+ BoxMaxs 0.6 1.2 0.6
+ "Polyline Height" 1
+ DrawShape 1
+ ShapeColor 1 0 0.75 0.224
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ UpdatePeriod 1
+ ClassFilter "ChimeraCharacter"
+}

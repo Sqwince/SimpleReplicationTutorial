@@ -1,0 +1,20 @@
+GameEntity {
+ ID "5A2B353238547DDF"
+ components {
+  MeshObject "{5A2AE5B2BA3F6585}" {
+   Object "{85E21F4FAEF9C8E3}system/wbdata/MaterialEditor/MaterialCube.xob"
+   Materials {
+    MaterialAssignClass "{5A2AE5B2666D8EF2}" {
+     SourceMaterial "DummyMaterial"
+     AssignedMaterial "{5CE9FD6089D048BF}system/wbdata/materials/defaultGround.emat"
+    }
+   }
+  }
+  ParametricMaterialInstanceComponent "{5A2AE5B282161FBA}" {
+   ColorAlbedo 0 0.069 0.913 1
+  }
+  RplComponent "{5A2AE5B2141E46F0}" {
+  }
+ }
+ coords 60 0.5 70
+}

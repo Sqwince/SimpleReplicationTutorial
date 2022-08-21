@@ -1,0 +1,46 @@
+$grp GenericWorldPPEffect {
+ PPWorldEffect_SSR {
+  coords -29.586 0 1.927
+  Priority 0
+  Profile 4
+ }
+ PPWorldEffect_GODRays {
+  coords -27.879 0 1.927
+  Priority 2
+  Profile 1
+ }
+ PPWorldEffect_HBAO {
+  coords -25.86 0 1.927
+  Priority 15
+  Profile 0
+ }
+ PPWorldEffect_PPAA {
+  coords -21.661 0 1.927
+  Priority 17
+  Profile 6
+ }
+ PPWorldEffect_HDR {
+  coords -23.68 0 1.927
+  Priority 16
+  Profile 2
+ }
+ PPWorldEffect_Rain {
+  coords -19.592 0 1.927
+  Priority 4
+  Profile 7
+ }
+ PPWorldEffect_SSDO {
+  coords -17.573 0 1.927
+  Priority 14
+  Profile 3
+ }
+ PPWorldEffect_Underwater {
+  coords -15.222 0 1.927
+  Priority 3
+  Profile 5
+ }
+}
+GenericWorldLightEntity GenericWorldLightEntity {
+ coords 0.127 0.001 0.265
+ angleX -90
+}

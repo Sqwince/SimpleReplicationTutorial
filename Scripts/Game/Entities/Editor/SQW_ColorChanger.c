@@ -37,7 +37,6 @@ class SQW_ColorChanger : ScriptComponent
 	protected RplComponent m_pRplComponent;
 
 	/*
-	protected ref Shape m_Sphere;
 	protected SQW_EditableCommentEntity m_pComment; 
 	
 	//HUD
@@ -84,12 +83,10 @@ class SQW_ColorChanger : ScriptComponent
 	
 	//------------------------------------------------------------------------------------------------
 	protected void OnTriggerActivate()
-	{	
-				
+	{					
 		//Change Color
 		m_Color = GetRandomColor();
-		m_ParametricMaterialinstanceComponent.SetColor(m_Color);
-			
+		m_ParametricMaterialinstanceComponent.SetColor(m_Color);			
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -100,26 +97,16 @@ class SQW_ColorChanger : ScriptComponent
 		{
 			m_pRandomGenerator = new RandomGenerator();
 		}
-		
+			
 		//random 8bit color between 0x00000000 and 0xFFFFFFFF
 		int _color = 0xff000000 | Math.RandomIntInclusive(0x0,0xffffff);
 	
 		return _color;
 	}
 	
-	
-	
-	//------------------------------------------------------------------------------------------------
-	override void EOnInit(IEntity owner)
-	{
-
-	}
-	
-		
 	//------------------------------------------------------------------------------------------------
 	override void OnPostInit(IEntity owner)
-	{
-				
+	{				
 		//world
 		m_World = GetGame().GetWorld();
 		if (!m_World)
@@ -136,7 +123,7 @@ class SQW_ColorChanger : ScriptComponent
 			return;
 		}
 	
-		//attach to trigger
+		//Attach to trigger
 		SCR_BaseTriggerEntity parentTrigger = SCR_BaseTriggerEntity.Cast(owner);
 		if (!parentTrigger)
 		{
@@ -146,7 +133,7 @@ class SQW_ColorChanger : ScriptComponent
 
 		parentTrigger.GetOnActivate().Insert(OnTriggerActivate);
 		
-		//Cube
+		//Cube Object
 		m_Cube = GameEntity.Cast(m_World.FindEntityByName("TheCube"));	
 			
 		if(!m_Cube)
@@ -155,7 +142,7 @@ class SQW_ColorChanger : ScriptComponent
 				return;
 			}
 		
-		//cube ParametricMaterialInstanceComponent	
+		//cube material Component
 		m_ParametricMaterialinstanceComponent = ParametricMaterialInstanceComponent.Cast(m_Cube.FindComponent(ParametricMaterialInstanceComponent));
 		
 		if(!m_ParametricMaterialinstanceComponent)
@@ -168,13 +155,11 @@ class SQW_ColorChanger : ScriptComponent
 		Print("Found everything!",LogLevel.WARNING);
 		SetEventMask(owner, EntityEvent.INIT);
 	}
-
 		
 	//------------------------------------------------------------------------------------------------
 	void SQW_ColorChanger(IEntityComponentSource src, IEntity ent, IEntity parent)
 	{
 	}
-
 	
 	//------------------------------------------------------------------------------------------------
 	void ~SQW_ColorChanger()

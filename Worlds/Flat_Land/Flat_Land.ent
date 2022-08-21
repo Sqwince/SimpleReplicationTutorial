@@ -1,0 +1,9 @@
+Layer World {
+ Index 0
+}
+Layer LightingAndPPWorldEffects {
+ Index 1
+}
+Layer Default_GameManagers {
+ Index 2
+}
